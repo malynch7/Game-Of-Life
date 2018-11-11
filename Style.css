@@ -1,0 +1,59 @@
+
+body{
+  background-image: url("HikingBackground.jpg");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+}
+
+.select{
+    align-items: middle;
+}
+ h1 {
+  text-align: center;
+  color: black;
+}
+table {
+  height: 525px;
+  width: 525px;
+}
+tr, td, table {
+  border-style: solid;
+  border-width: 1px;
+  background-color: white;
+  margin: auto;
+  margin-top: 20px;
+}
+td {
+  transition: .3s background-color;
+}
+td:hover {
+  background-color: red;
+}
+button {
+  height: 25px;
+  width: 225px;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  left: 40%;
+  margin-top: -40px;
+}
+.HighLight {
+  background-color:blue !important;
+}
+
+.buttonM{
+      width: 125px;
+      height: 35px;
+      right: 30%;
+      left: 70%;
+}
+#JustButtons{
+  position: absolute;
+  bottom: 5px;
+}
+.select{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
