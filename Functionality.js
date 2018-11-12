@@ -254,9 +254,9 @@ function incrementStop(){
     document.getElementById("button7").disabled = false;
 }
 
-function increment23(){
-    incrementEvery(0.25);
-    setTimeout(incrementStop, 5750);
+function increment23(seconds){
+    incrementEvery(seconds);
+    setTimeout(incrementStop, (seconds * 23000));
 }
 
 function clearState(){
