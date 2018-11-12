@@ -111,6 +111,7 @@
 
 // game logic
 
+var generation = 0;
 var currentState = [];
 var nextState = [];
 
@@ -181,6 +182,8 @@ function increment(numOfIterations){
         }
         currentState = JSON.parse(JSON.stringify(nextState));
         numOfIterations--;
+        generation++;
+        document.getElementById("generation").innerHTML = "Generation: " + generation;
     }
     unloadCurrentState();
 
@@ -257,6 +260,8 @@ function increment23(){
 }
 
 function clearState(){
+    generation = 0;
+    document.getElementById("generation").innerHTML = "Generation: 0";
     for (var i = 0; i < gridDimension; i++ ){
         for(var j = 0; j < gridDimension; j++){
             if($("#" + (i*gridDimension + j)).hasClass('HighLight')){
