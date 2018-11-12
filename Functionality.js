@@ -240,7 +240,7 @@ function incrementStop(){
     clearInterval(interval);
 
     var btn = document.getElementById("start");
-    btn.innerHTML = "Stop";
+    btn.innerHTML = "Start";
     btn.setAttribute("onclick","incrementEvery(0.5)");
     document.getElementById("button1").disabled = false;
     document.getElementById("increment1").disabled = false;
