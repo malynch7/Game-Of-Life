@@ -105,3 +105,106 @@
                 $("#button7").click(function(){
                   //do prepopulated pattern
                 })
+
+// game logic
+
+var currentState = [];
+var nextState = [];
+
+// test param
+// currentState = [[0,0,1],[1,1,1],[0,0,0]];
+
+function increment(numOfIterations){
+
+    // TO BE IMPLEMENTED HERE: method of retrieving data from grid and storing it in currentState[][];
+
+    while (numOfIterations > 0){
+
+        nextState = JSON.parse(JSON.stringify(currentState));
+
+        for (var i = 0; i < currentState.length; i++){
+            for ( var j = 0; j< currentState[i].length; j++){
+
+                // find number of living neighbors
+                var neighbors = 0;
+                //check above
+                if (i != 0){
+                    if(currentState[i-1][j] == 1){
+                        neighbors++;
+                    }
+                    if (j != 0 && currentState[i-1][j-1] == 1){
+                            neighbors++;
+                    }
+                    if(j != (currentState[i-1].length - 1) && currentState[i-1][j+1] == 1){
+                        neighbors++;
+                    }
+                }
+                // check beside
+                if (j != 0 && currentState[i][j-1] == 1){
+                        neighbors++;
+                }
+                if(j != (currentState[i].length - 1) && currentState[i][j+1] == 1){
+                        neighbors++;
+                }
+                // check below
+                if (i != currentState.length - 1){
+                    if(currentState[i+1][j] == 1){
+                        neighbors++;
+                    }
+                    if (j != 0 && currentState[i+1][j-1] == 1){
+                            neighbors++;
+                    }
+                    if(j != (currentState[i+1].length - 1) && currentState[i+1][j+1] == 1){
+                            neighbors++;
+                    }
+                }
+
+                // apply rules
+                // rule 1 & 6
+                if(currentState[i][j] == 1 && neighbors < 2){
+                    nextState[i][j] = 0;
+                }
+                // rule 2 & 7
+                if(currentState[i][j] == 1 && neighbors > 3){
+                    nextState[i][j] = 0;
+                }
+                // rule 3 & 8
+                    // implicit - require no state change
+                // rule 4 & 5
+                if(currentState[i][j] == 0 && neighbors == 3){
+                    nextState[i][j] = 1;
+                }
+            }
+        }
+        // alert(currentState + "\n\n" + nextState);
+        currentState = JSON.parse(JSON.stringify(nextState));
+        numOfIterations--;
+    }
+    // TO BE IMPLEMENTED HERE: method of retrieving data from currentState[][] and displaying it in grid ;
+}
+
+function toggle(i, j){
+// Possible onclick function that needs a method for deriving cell name, as per naming scheme.
+
+    if(currentState[i][j] == 0){
+        currentState[i][j] = 1;
+        document.getElementById( /*cell id here*/ ).setAttribute("class","Highlight");
+    }else{
+        currentState[i][j] = 0;
+        document.getElementById( /*cell id here*/ ).removeAttribute("class");
+    }
+}
+
+// implementation for possible "play" button
+var interval = null;
+
+function incrementEvery(seconds){
+    $(document).on('ready',function(){
+        interval = setInterval(increment(1),(seconds * 1000));
+    });
+}
+
+// implementation for corresponding "stop" button
+function incrementStop(){
+    clearInterval(interval);
+}
