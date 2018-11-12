@@ -186,6 +186,38 @@ function increment(numOfIterations){
     unloadCurrentState();
 }
 
+
+function loadCurrentState(){
+// display to currentState[][]
+   var tmpArray = [];
+   for (var i = 0; i < gridDimension; i++ ){
+       tmpArray[i] = [];
+       for(var j = 0; j < gridDimension; j++){
+           if($("#" + (i*gridDimension + j)).hasClass('HighLight')){
+               tmpArray[i][j] = 1;
+           }else{
+               tmpArray[i][j] = 0;
+           }
+       }
+   }
+   currentState = JSON.parse(JSON.stringify(tmpArray));
+}
+
+function unloadCurrentState() {
+// currentState[][] to display
+   for (var i = 0; i < gridDimension; i++ ){
+       for(var j = 0; j < gridDimension; j++){
+           if(currentState[i][j] === 1 && !($("#" + (i*gridDimension + j)).hasClass('HighLight'))){
+               $("#" + (i*gridDimension + j)).addClass('HighLight');
+           }else if(currentState[i][j] === 0 && $("#" + (i*gridDimension + j)).hasClass('HighLight')){
+               $("#" + (i*gridDimension + j)).removeClass('HighLight');
+           }
+       }
+   }
+}
+
+// unimplemented functionality
+
 function toggle(i, j){
 // Possible onclick function that needs a method for deriving cell id, as per naming scheme.
 
@@ -200,7 +232,6 @@ function toggle(i, j){
 
 // implementation for possible "play" button
 var interval = null;
-
 function incrementEvery(seconds){
     $(document).on('ready',function(){
         interval = setInterval(increment(1),(seconds * 1000));
@@ -210,31 +241,4 @@ function incrementEvery(seconds){
 // implementation for corresponding "stop" button
 function incrementStop(){
     clearInterval(interval);
-}
-
-function loadCurrentState(){
-    var tmpArray = [];
-    for (var i = 0; i < gridDimension; i++ ){
-        tmpArray[i] = [];
-        for(var j = 0; j < gridDimension; j++){
-            if($("#" + (i*gridDimension + j)).hasClass('HighLight')){
-                tmpArray[i][j] = 1;
-            }else{
-                tmpArray[i][j] = 0;
-            }
-        }
-    }
-    currentState = JSON.parse(JSON.stringify(tmpArray));
-}
-
-function unloadCurrentState() {
-    for (var i = 0; i < gridDimension; i++ ){
-        for(var j = 0; j < gridDimension; j++){
-            if(currentState[i][j] === 1 && !($("#" + (i*gridDimension + j)).hasClass('HighLight'))){
-                $("#" + (i*gridDimension + j)).addClass('HighLight');
-            }else if(currentState[i][j] === 0 && $("#" + (i*gridDimension + j)).hasClass('HighLight')){
-                $("#" + (i*gridDimension + j)).removeClass('HighLight');
-            }
-        }
-    }
 }
