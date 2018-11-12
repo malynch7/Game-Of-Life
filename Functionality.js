@@ -179,18 +179,18 @@ function increment(numOfIterations){
                 }
             }
         }
-        //alert(currentState + "\n\n" + nextState);
         currentState = JSON.parse(JSON.stringify(nextState));
         numOfIterations--;
     }
     unloadCurrentState();
 }
 
-
 function loadCurrentState(){
 // display to currentState[][]
    var tmpArray = [];
+
    for (var i = 0; i < gridDimension; i++ ){
+
        tmpArray[i] = [];
        for(var j = 0; j < gridDimension; j++){
            if($("#" + (i*gridDimension + j)).hasClass('HighLight')){
@@ -207,6 +207,7 @@ function unloadCurrentState() {
 // currentState[][] to display
    for (var i = 0; i < gridDimension; i++ ){
        for(var j = 0; j < gridDimension; j++){
+
            if(currentState[i][j] === 1 && !($("#" + (i*gridDimension + j)).hasClass('HighLight'))){
                $("#" + (i*gridDimension + j)).addClass('HighLight');
            }else if(currentState[i][j] === 0 && $("#" + (i*gridDimension + j)).hasClass('HighLight')){
@@ -232,7 +233,9 @@ function toggle(i, j){
 
 // implementation for possible "play" button
 var interval = null;
+
 function incrementEvery(seconds){
+
     $(document).on('ready',function(){
         interval = setInterval(increment(1),(seconds * 1000));
     });
@@ -240,5 +243,6 @@ function incrementEvery(seconds){
 
 // implementation for corresponding "stop" button
 function incrementStop(){
+
     clearInterval(interval);
 }
