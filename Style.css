@@ -32,7 +32,7 @@ td:hover {
 button {
   height: 25px;
   width: 225px;
-  margin: 0 auto;
+  margin: auto;
   position: relative;
   top: 50%;
   left: 40%;
@@ -50,10 +50,16 @@ button {
 }
 #JustButtons{
   position: absolute;
-  bottom: 5px;
+  bottom: 5%;
 }
 .select{
     display: block;
     margin-left: auto;
     margin-right: auto
+}
+
+#button1{
+    width: 125px;
+    height: 35px;
+    left: 46.5%;
 }

@@ -183,6 +183,7 @@ function increment(numOfIterations){
         numOfIterations--;
     }
     unloadCurrentState();
+
 }
 
 function loadCurrentState(){
@@ -190,7 +191,6 @@ function loadCurrentState(){
    var tmpArray = [];
 
    for (var i = 0; i < gridDimension; i++ ){
-
        tmpArray[i] = [];
        for(var j = 0; j < gridDimension; j++){
            if($("#" + (i*gridDimension + j)).hasClass('HighLight')){
@@ -217,32 +217,65 @@ function unloadCurrentState() {
    }
 }
 
+var interval = null;
+function incrementEvery(seconds){
+// implementation for possible "play" button
+    interval = setInterval(increment,(seconds * 1000), 1);
+
+    var btn = document.getElementById("start");
+    btn.innerHTML = "Stop";
+    btn.setAttribute("onclick","incrementStop()");
+    document.getElementById("button1").disabled = true;
+    document.getElementById("increment1").disabled = true;
+    document.getElementById("increment23").disabled = true;
+    document.getElementById("clear").disabled = true;
+    document.getElementById("button5").disabled = true;
+    document.getElementById("button6").disabled = true;
+    document.getElementById("button7").disabled = true;
+}
+
+
+function incrementStop(){
+// implementation for corresponding "stop" button
+    clearInterval(interval);
+
+    var btn = document.getElementById("start");
+    btn.innerHTML = "Stop";
+    btn.setAttribute("onclick","incrementEvery(0.5)");
+    document.getElementById("button1").disabled = false;
+    document.getElementById("increment1").disabled = false;
+    document.getElementById("increment23").disabled = false;
+    document.getElementById("clear").disabled = false;
+    document.getElementById("button5").disabled = false;
+    document.getElementById("button6").disabled = false;
+    document.getElementById("button7").disabled = false;
+}
+
+function increment23(){
+    incrementEvery(0.25);
+    setTimeout(incrementStop, 5750);
+}
+
+function clearState(){
+    for (var i = 0; i < gridDimension; i++ ){
+        for(var j = 0; j < gridDimension; j++){
+            if($("#" + (i*gridDimension + j)).hasClass('HighLight')){
+                $("#" + (i*gridDimension + j)).removeClass('HighLight');
+            }
+        }
+    }
+}
+
 // unimplemented functionality
 
 function toggle(i, j){
 // Possible onclick function that needs a method for deriving cell id, as per naming scheme.
-
-    if(currentState[i][j] === 0){
-        currentState[i][j] = 1;
-        document.getElementById( /*cell id here*/ ).setAttribute("class","Highlight");
-    }else{
-        currentState[i][j] = 0;
-        document.getElementById( /*cell id here*/ ).removeAttribute("class");
-    }
+   if(currentState[i][j] === 0){
+       currentState[i][j] = 1;
+       document.getElementById( /*cell id here*/ ).setAttribute("class","Highlight");
+   }else{
+       currentState[i][j] = 0;
+       document.getElementById( /*cell id here*/ ).removeAttribute("class");
+   }
 }
 
-// implementation for possible "play" button
-var interval = null;
-
-function incrementEvery(seconds){
-
-    $(document).on('ready',function(){
-        interval = setInterval(increment(1),(seconds * 1000));
-    });
-}
-
-// implementation for corresponding "stop" button
-function incrementStop(){
-
-    clearInterval(interval);
-}
