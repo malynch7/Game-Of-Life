@@ -1,4 +1,4 @@
-          alert("i am here");
+
            var IncrementMain=0;
            var finalNumber=0;
            var IntoString="";
@@ -53,8 +53,6 @@
                   $("#container").empty().append(table);
                   $("tr").css("height", size);
                   $("td").css("color", "red").css("width", size);
-                  alert(rows);
-                  alert(cols);
                   if(rows==10 && cols==10){
                   $("#44").addClass('HighLight');
                   $("#55").addClass('HighLight');
@@ -98,3 +96,12 @@
                     $("#125").addClass('HighLight');
                   }
                 }
+                $("#button5").click(function(){
+                  //do prepopulated pattern
+                })
+                $("#button6").click(function(){
+                  //do prepopulated pattern
+                })
+                $("#button7").click(function(){
+                  //do prepopulated pattern
+                })
