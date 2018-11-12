@@ -1,6 +1,7 @@
 
            var IncrementMain=0;
            var finalNumber=0;
+           var gridDimension;
            var IntoString="";
            var PreSelected1=0;
            var PreSelected2=0;
@@ -34,6 +35,7 @@
                     });
               }
                 function grid(rows, cols) {
+                  gridDimension = rows;
                   finalNumber=0;
                   var StrToInt = 0;
                   IncrementMain=0;
@@ -117,7 +119,7 @@ var nextState = [];
 
 function increment(numOfIterations){
 
-    // TO BE IMPLEMENTED HERE: method of retrieving data from grid and storing it in currentState[][];
+    loadCurrentState();
 
     while (numOfIterations > 0){
 
@@ -129,50 +131,50 @@ function increment(numOfIterations){
                 // find number of living neighbors
                 var neighbors = 0;
                 //check above
-                if (i != 0){
-                    if(currentState[i-1][j] == 1){
+                if (i !== 0){
+                    if(currentState[i-1][j] === 1){
                         neighbors++;
                     }
-                    if (j != 0 && currentState[i-1][j-1] == 1){
+                    if (j !== 0 && currentState[i-1][j-1] === 1){
                             neighbors++;
                     }
-                    if(j != (currentState[i-1].length - 1) && currentState[i-1][j+1] == 1){
+                    if(j !== (currentState[i-1].length - 1) && currentState[i-1][j+1] === 1){
                         neighbors++;
                     }
                 }
                 // check beside
-                if (j != 0 && currentState[i][j-1] == 1){
+                if (j !== 0 && currentState[i][j-1] === 1){
                         neighbors++;
                 }
-                if(j != (currentState[i].length - 1) && currentState[i][j+1] == 1){
+                if(j !== (currentState[i].length - 1) && currentState[i][j+1] === 1){
                         neighbors++;
                 }
                 // check below
-                if (i != currentState.length - 1){
-                    if(currentState[i+1][j] == 1){
+                if (i !== currentState.length - 1){
+                    if(currentState[i+1][j] === 1){
                         neighbors++;
                     }
-                    if (j != 0 && currentState[i+1][j-1] == 1){
+                    if (j !== 0 && currentState[i+1][j-1] === 1){
                             neighbors++;
                     }
-                    if(j != (currentState[i+1].length - 1) && currentState[i+1][j+1] == 1){
+                    if(j !== (currentState[i+1].length - 1) && currentState[i+1][j+1] === 1){
                             neighbors++;
                     }
                 }
 
                 // apply rules
                 // rule 1 & 6
-                if(currentState[i][j] == 1 && neighbors < 2){
+                if(currentState[i][j] === 1 && neighbors < 2){
                     nextState[i][j] = 0;
                 }
                 // rule 2 & 7
-                if(currentState[i][j] == 1 && neighbors > 3){
+                if(currentState[i][j] === 1 && neighbors > 3){
                     nextState[i][j] = 0;
                 }
                 // rule 3 & 8
                     // implicit - require no state change
                 // rule 4 & 5
-                if(currentState[i][j] == 0 && neighbors == 3){
+                if(currentState[i][j] === 0 && neighbors === 3){
                     nextState[i][j] = 1;
                 }
             }
@@ -181,13 +183,13 @@ function increment(numOfIterations){
         currentState = JSON.parse(JSON.stringify(nextState));
         numOfIterations--;
     }
-    // TO BE IMPLEMENTED HERE: method of retrieving data from currentState[][] and displaying it in grid ;
+    unloadCurrentState();
 }
 
 function toggle(i, j){
 // Possible onclick function that needs a method for deriving cell id, as per naming scheme.
 
-    if(currentState[i][j] == 0){
+    if(currentState[i][j] === 0){
         currentState[i][j] = 1;
         document.getElementById( /*cell id here*/ ).setAttribute("class","Highlight");
     }else{
@@ -208,4 +210,31 @@ function incrementEvery(seconds){
 // implementation for corresponding "stop" button
 function incrementStop(){
     clearInterval(interval);
+}
+
+function loadCurrentState(){
+    var tmpArray = [];
+    for (var i = 0; i < gridDimension; i++ ){
+        tmpArray[i] = [];
+        for(var j = 0; j < gridDimension; j++){
+            if($("#" + (i*gridDimension + j)).hasClass('HighLight')){
+                tmpArray[i][j] = 1;
+            }else{
+                tmpArray[i][j] = 0;
+            }
+        }
+    }
+    currentState = JSON.parse(JSON.stringify(tmpArray));
+}
+
+function unloadCurrentState() {
+    for (var i = 0; i < gridDimension; i++ ){
+        for(var j = 0; j < gridDimension; j++){
+            if(currentState[i][j] === 1 && !($("#" + (i*gridDimension + j)).hasClass('HighLight'))){
+                $("#" + (i*gridDimension + j)).addClass('HighLight');
+            }else if(currentState[i][j] === 0 && $("#" + (i*gridDimension + j)).hasClass('HighLight')){
+                $("#" + (i*gridDimension + j)).removeClass('HighLight');
+            }
+        }
+    }
 }
