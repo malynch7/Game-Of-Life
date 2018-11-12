@@ -34,9 +34,6 @@ button {
   width: 225px;
   margin: auto;
   position: relative;
-  top: 50%;
-  left: 40%;
-  margin-top: -40px;
 }
 .HighLight {
   background-color:blue !important;
@@ -45,17 +42,17 @@ button {
 .buttonM{
       width: 125px;
       height: 35px;
-      right: 30%;
-      left: 70%;
+
 }
 #JustButtons{
-  position: absolute;
-  bottom: 5%;
+    text-align: center;
+    margin: auto;
+    padding-top: 75px;
 }
 .select{
     display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
 }
 
 #button1{
