@@ -98,13 +98,14 @@
                 }
                 $("#button5").click(function(){
                   //do prepopulated pattern
-                })
+                });
                 $("#button6").click(function(){
                   //do prepopulated pattern
-                })
+                });
                 $("#button7").click(function(){
                   //do prepopulated pattern
-                })
+                });
+
 
 // game logic
 
@@ -176,7 +177,7 @@ function increment(numOfIterations){
                 }
             }
         }
-        // alert(currentState + "\n\n" + nextState);
+        //alert(currentState + "\n\n" + nextState);
         currentState = JSON.parse(JSON.stringify(nextState));
         numOfIterations--;
     }
@@ -184,7 +185,7 @@ function increment(numOfIterations){
 }
 
 function toggle(i, j){
-// Possible onclick function that needs a method for deriving cell name, as per naming scheme.
+// Possible onclick function that needs a method for deriving cell id, as per naming scheme.
 
     if(currentState[i][j] == 0){
         currentState[i][j] = 1;
