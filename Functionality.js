@@ -163,6 +163,46 @@
                 });
                 $("#button7").click(function(){
                     clearState()
+                    if (gridDimension == 10) {
+                        $("#54").addClass('HighLight');
+                        $("#55").addClass('HighLight');
+                        $("#44").addClass('HighLight');
+                        $("#45").addClass('HighLight');
+                        $("#53").addClass('HighLight');
+                        $("#46").addClass('HighLight');
+                    }
+                    if (gridDimension == 15) {
+                        $("#97").addClass('HighLight');
+                        $("#98").addClass('HighLight');
+                        $("#113").addClass('HighLight');
+                        $("#112").addClass('HighLight');
+                        $("#111").addClass('HighLight');
+                        $("#99").addClass('HighLight');
+                    }
+                    if (gridDimension == 20) {
+                        $("#190").addClass('HighLight');
+                        $("#210").addClass('HighLight');
+                        $("#189").addClass('HighLight');
+                        $("#209").addClass('HighLight');
+                        $("#191").addClass('HighLight');
+                        $("#208").addClass('HighLight');
+                    }
+                    if (gridDimension == 25) {
+                        $("#261").addClass('HighLight');
+                        $("#262").addClass('HighLight');
+                        $("#286").addClass('HighLight');
+                        $("#287").addClass('HighLight');
+                        $("#263").addClass('HighLight');
+                        $("#285").addClass('HighLight');
+                    }
+                    if (gridDimension == 30) {
+                        $("#465").addClass('HighLight');
+                        $("#495").addClass('HighLight');
+                        $("#494").addClass('HighLight');
+                        $("#464").addClass('HighLight');
+                        $("#466").addClass('HighLight');
+                        $("#493").addClass('HighLight');
+                    }
                 });
                 $("#button8").click(function(){
                   });
