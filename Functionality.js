@@ -36,6 +36,8 @@
               }
                 function grid(rows, cols) {
                   gridDimension = rows;
+                  generation = 0;
+                  document.getElementById("generation").innerHTML = "Generation: 0";
                   finalNumber=0;
                   var StrToInt = 0;
                   IncrementMain=0;
@@ -98,9 +100,47 @@
                     $("#125").addClass('HighLight');
                   }
                 }
-                $("#button5").click(function(){
-                  //do prepopulated pattern
-                });
+           $("#button5").click(function () {
+               if (gridDimension == 10) {
+                   $("#54").addClass('HighLight');
+                   $("#55").addClass('HighLight');
+                   $("#44").addClass('HighLight');
+                   $("#45").addClass('HighLight');
+               }
+               if (gridDimension == 15) {
+                   $("#97").addClass('HighLight');
+                   $("#98").addClass('HighLight');
+                   $("#113").addClass('HighLight');
+                   $("#112").addClass('HighLight');
+               }
+               if (gridDimension == 20) {
+                   $("#190").addClass('HighLight');
+                   $("#210").addClass('HighLight');
+                   $("#189").addClass('HighLight');
+                   $("#209").addClass('HighLight');
+               }
+               if (gridDimension == 25) {
+                   $("#286").addClass('HighLight');
+                   $("#336").addClass('HighLight');
+                   $("#312").addClass('HighLight');
+                   $("#337").addClass('HighLight');
+                   $("#335").addClass('HighLight');
+               }
+               if (gridDimension == 30) {
+                   $("#434").addClass('HighLight');
+                   $("#465").addClass('HighLight');
+                   $("#495").addClass('HighLight');
+                   $("#494").addClass('HighLight');
+                   $("#493").addClass('HighLight');
+               }
+               if (gridDimension == 35) {
+                   $("#4").addClass('HighLight');
+                   $("#451").addClass('HighLight');
+                   $("#481").addClass('HighLight');
+                   $("#126").addClass('HighLight');
+                   $("#125").addClass('HighLight');
+               }
+           });
                 $("#button6").click(function(){
                   //do prepopulated pattern
                 });
