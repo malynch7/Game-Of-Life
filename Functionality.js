@@ -162,8 +162,10 @@
                     }
                 });
                 $("#button7").click(function(){
-                  //do prepopulated pattern
+                    clearState()
                 });
+                $("#button8").click(function(){
+                  });
 
 
 // game logic
