@@ -134,7 +134,32 @@
                }
            });
                 $("#button6").click(function(){
-                  //do prepopulated pattern
+                    clearState()
+                    if (gridDimension == 10) {
+                        $("#54").addClass('HighLight');
+                        $("#55").addClass('HighLight');
+                        $("#53").addClass('HighLight');
+                    }
+                    if (gridDimension == 15) {
+                        $("#97").addClass('HighLight');
+                        $("#98").addClass('HighLight');
+                        $("#96").addClass('HighLight');
+                    }
+                    if (gridDimension == 20) {
+                        $("#190").addClass('HighLight');
+                        $("#188").addClass('HighLight');
+                        $("#189").addClass('HighLight');
+                    }
+                    if (gridDimension == 25) {
+                        $("#261").addClass('HighLight');
+                        $("#262").addClass('HighLight');
+                        $("#260").addClass('HighLight');
+                    }
+                    if (gridDimension == 30) {
+                        $("#493").addClass('HighLight');
+                        $("#495").addClass('HighLight');
+                        $("#494").addClass('HighLight');
+                    }
                 });
                 $("#button7").click(function(){
                   //do prepopulated pattern
