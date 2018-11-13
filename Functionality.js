@@ -101,6 +101,7 @@
                   }
                 }
            $("#button5").click(function () {
+            clearState()
                if (gridDimension == 10) {
                    $("#54").addClass('HighLight');
                    $("#55").addClass('HighLight');
@@ -120,25 +121,16 @@
                    $("#209").addClass('HighLight');
                }
                if (gridDimension == 25) {
+                   $("#261").addClass('HighLight');
+                   $("#262").addClass('HighLight');
                    $("#286").addClass('HighLight');
-                   $("#336").addClass('HighLight');
-                   $("#312").addClass('HighLight');
-                   $("#337").addClass('HighLight');
-                   $("#335").addClass('HighLight');
+                   $("#287").addClass('HighLight');
                }
                if (gridDimension == 30) {
-                   $("#434").addClass('HighLight');
                    $("#465").addClass('HighLight');
                    $("#495").addClass('HighLight');
                    $("#494").addClass('HighLight');
-                   $("#493").addClass('HighLight');
-               }
-               if (gridDimension == 35) {
-                   $("#4").addClass('HighLight');
-                   $("#451").addClass('HighLight');
-                   $("#481").addClass('HighLight');
-                   $("#126").addClass('HighLight');
-                   $("#125").addClass('HighLight');
+                   $("#464").addClass('HighLight');
                }
            });
                 $("#button6").click(function(){
