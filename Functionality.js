@@ -334,6 +334,7 @@ function incrementEvery(seconds){
     document.getElementById("button5").disabled = true;
     document.getElementById("button6").disabled = true;
     document.getElementById("button7").disabled = true;
+    document.getElementById("button8").disabled = true;
 }
 
 
@@ -351,6 +352,7 @@ function incrementStop(){
     document.getElementById("button5").disabled = false;
     document.getElementById("button6").disabled = false;
     document.getElementById("button7").disabled = false;
+    document.getElementById("button8").disabled = false;
 }
 
 function increment23(seconds){
