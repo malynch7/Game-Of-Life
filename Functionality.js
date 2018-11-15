@@ -357,7 +357,7 @@ function incrementStop(){
 
 function increment23(seconds){
     incrementEvery(seconds);
-    setTimeout(incrementStop, (seconds * 23000));
+    setTimeout(incrementStop, (seconds * 23000) + 10);
 }
 
 function clearState(){
